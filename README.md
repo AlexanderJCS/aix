@@ -18,7 +18,9 @@ WARNING: while safety measures in place, it is still important to use this tool 
 
 ## Installation
 
-To-do
+```shell
+$ pip install ai-execute
+```
 
 ## Usage
 
