@@ -1,4 +1,4 @@
-from src.tgen import cmd
+from src.aix import cmd
 import pytest
 
 

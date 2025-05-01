@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Terminal Gen"
+name = "AI Execute"
 version = "0.1.0"
 
 authors = [
@@ -22,9 +22,9 @@ classifiers = [
 ]
 
 [project.urls]
-repository = "https://github.com/AlexanderJCS/line-count"
-homepage = "https://github.com/AlexanderJCS/line-count"
-issues = "https://github.com/AlexanderJCS/line-count/issues"
+repository = "https://github.com/AlexanderJCS/aix"
+homepage = "https://github.com/AlexanderJCS/aix"
+issues = "https://github.com/AlexanderJCS/aix/issues"
 
 [project.scripts]
 linecount = "linecount.cli:cli"
