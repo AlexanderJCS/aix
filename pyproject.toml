@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0", "colorama~=0.4.6", "ollama~=0.4.8"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -20,6 +20,8 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent"
 ]
+
+dependencies = ["colorama~=0.4.6", "ollama~=0.4.8"]
 
 [project.urls]
 repository = "https://github.com/AlexanderJCS/aix"
