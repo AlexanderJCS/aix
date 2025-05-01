@@ -8,7 +8,7 @@ import ollama
 
 import psutil
 
-import path
+from . import path
 
 
 with (path.resources() / "prompt.txt").open("r") as f:
@@ -27,24 +27,13 @@ class Command:
 PYTHON_REGEX = re.compile(r"(?i)^python(?:[0-9]+(?:\.[0-9]+)*)?w?(?:\.exe)?$")
 
 
-def detect_terminal() -> str:
+def detect_shell() -> str:
     """
-    Walk up parent processes until we find one whose name
-    isn't Python. Return its basename, e.g. "bash" or "cmd". Automatically removes the string .exe
+    Detects the terminal used by subprocess.run(..., shell=True)
+    :return: The terminal used by subprocess.run(..., shell=True), as a string
     """
     
-    proc = psutil.Process(os.getpid())
-    for parent in proc.parents():  # parents() returns all ancestors
-        try:
-            name = parent.name()  # .name() gives just the executable's basename
-        except (psutil.NoSuchProcess, psutil.AccessDenied):
-            continue
-        
-        lname = name.lower()
-        if not PYTHON_REGEX.fullmatch(lname):
-            return name.replace(".exe", "")
-    
-    return "unknown"
+    return os.environ.get("COMSPEC", "cmd.exe") if os.name == "nt" else "/bin/sh"
 
 
 def get_os_str() -> str:
@@ -62,7 +51,7 @@ def get_prompt(terminal: str, user_prompt: str, operating_system: str) -> str:
 def get_cmd(user_prompt: str) -> Command:
     ai_output = ollama.generate(
         model="llama3.1",
-        prompt=get_prompt(detect_terminal(), user_prompt, get_os_str())
+        prompt=get_prompt(detect_shell(), user_prompt, get_os_str())
     )
     
     response = ai_output["response"]
