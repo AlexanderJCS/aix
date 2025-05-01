@@ -1,3 +1,4 @@
+import sys
 from dataclasses import dataclass
 import json
 import platform
@@ -65,10 +66,23 @@ def get_prompt(terminal: str, user_prompt: str, operating_system: str) -> str:
 
 
 def get_cmd(user_prompt: str) -> Command:
-    ai_output = ollama.generate(
-        model="llama3.1",
-        prompt=get_prompt(detect_shell(), user_prompt, get_os_str())
-    )
+    try:
+        ai_output = ollama.generate(
+            model="llama3.1",
+            prompt=get_prompt(detect_shell(), user_prompt, get_os_str())
+        )
+    except ConnectionError:
+        print("Could not connect to ollama, used for running AI models locally. "
+              "Make sure it is downloaded and running. https://ollama.com/download."
+              "It is also recommended to view AIX's installation instructions: https://github.com/AlexanderJCS/aix",
+              file=sys.stderr)
+        exit(1)
+    except ollama._types.ResponseError:
+        print("Could not run llama3.1:8b model. Please run the following in the console:\n"
+              "$ ollama install llama3.1:8b\n\n"
+              "AIX's installation instructions may also be helpful: https://github.com/AlexanderJCS/aix",
+              file=sys.stderr)
+        exit(1)
     
     response = ai_output["response"]
     
