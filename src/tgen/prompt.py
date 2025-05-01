@@ -1,15 +1,17 @@
+from dataclasses import dataclass
+import json
+import platform
 import os
 import re
 
 import ollama
 
-from dataclasses import dataclass
-import json
-import platform
-
 import psutil
 
-with open("../prompt.txt") as f:
+import path
+
+
+with (path.resources() / "prompt.txt").open("r") as f:
     PROMPT = f.read()
 
 
@@ -25,11 +27,12 @@ class Command:
 PYTHON_REGEX = re.compile(r"(?i)^python(?:[0-9]+(?:\.[0-9]+)*)?w?(?:\.exe)?$")
 
 
-def detect_terminal():
+def detect_terminal() -> str:
     """
     Walk up parent processes until we find one whose name
-    isn't Python. Return its basename, e.g. "bash" or "cmd.exe".
+    isn't Python. Return its basename, e.g. "bash" or "cmd". Automatically removes the string .exe
     """
+    
     proc = psutil.Process(os.getpid())
     for parent in proc.parents():  # parents() returns all ancestors
         try:
