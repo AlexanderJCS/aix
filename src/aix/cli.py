@@ -10,7 +10,7 @@ from colorama import Fore
 
 def get_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        prog="Terminal Gen",
+        prog="AI Execute (aix)",
         description="Use a locally-hosted AI model to generate terminal commands"
     )
     
