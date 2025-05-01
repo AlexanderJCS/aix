@@ -1,5 +1,6 @@
 .idea
 .vscode
+twine-token.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
