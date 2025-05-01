@@ -68,7 +68,7 @@ def get_prompt(terminal: str, user_prompt: str, operating_system: str) -> str:
 def get_cmd(user_prompt: str) -> Command:
     try:
         ai_output = ollama.generate(
-            model="llama3.1",
+            model="llama3.1:8b",
             prompt=get_prompt(detect_shell(), user_prompt, get_os_str())
         )
     except ConnectionError:

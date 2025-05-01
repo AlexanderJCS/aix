@@ -19,7 +19,7 @@ WARNING: while safety measures in place, it is still important to use this tool 
 ## Installation
 
 1. Download Ollama at the official site: [https://ollama.com/download](https://ollama.com/download)
-2. Download llama3.1 (8b parameters):
+2. Download llama3.1 (8 billion parameter version) _This will take approx 5gb_
 ```shell
 $ ollama run llama3.1:8b
 ```
