@@ -79,7 +79,7 @@ def get_cmd(user_prompt: str) -> Command:
         exit(1)
     except ollama._types.ResponseError:
         print("Could not run llama3.1:8b model. Please run the following in the console:\n"
-              "$ ollama install llama3.1:8b\n\n"
+              "$ ollama run llama3.1:8b\n\n"
               "AIX's installation instructions may also be helpful: https://github.com/AlexanderJCS/aix",
               file=sys.stderr)
         exit(1)
