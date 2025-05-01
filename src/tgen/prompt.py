@@ -6,8 +6,6 @@ import re
 
 import ollama
 
-import psutil
-
 from . import path
 
 
