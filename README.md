@@ -24,7 +24,7 @@ WARNING: while safety measures in place, it is still important to use this tool 
 $ ollama run llama3.1:8b
 ```
 
-``shell
+```shell
 $ pip install ai-execute
 ```
 
@@ -36,11 +36,11 @@ Run the `aix` command with a prompt to generate a terminal command
 $ aix "List all files in the current directory"
 ```
 
-## Options
+### Options
 
 * `--yes`, `-y`: Automatically execute the generated command if no safety warnings are found. _See the above disclaimer._
 
 Example:
 ```shell
-$ aix "Create a new file called cats.txt"
+$ aix "Create a new file called cats.txt" -y
 ```
