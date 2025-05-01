@@ -13,7 +13,7 @@ authors = [
 description = "Use AI to generate terminal commands"
 readme = "README.md"
 
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -27,7 +27,7 @@ homepage = "https://github.com/AlexanderJCS/aix"
 issues = "https://github.com/AlexanderJCS/aix/issues"
 
 [project.scripts]
-linecount = "linecount.cli:cli"
+linecount = "src.aix.cli:main"
 
 [options.packages.find]
 where = "src"
